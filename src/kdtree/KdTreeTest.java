@@ -26,10 +26,10 @@ public class KdTreeTest {
 		
 		// Create kd-tree
 		
-		KdTree<Point2i> tree = new KdTree<Point2i>(2, v_tree_points,Integer.MAX_VALUE);
+		KdTree<Point2i> tree = new KdTree<Point2i>(2, v_tree_points,Integer.MAX_VALUE);		// arbre et ses points
 		
 		// Create a vector of query Point
-		ArrayList<Point2i> v_query_points = new ArrayList<Point2i>();
+		ArrayList<Point2i> v_query_points = new ArrayList<Point2i>();		// points à tester
 		v_query_points.add(new Point2i(0,0));
 		v_query_points.add(new Point2i(100,100));
 		v_query_points.add(new Point2i(200,200));
@@ -54,6 +54,43 @@ public class KdTreeTest {
 	        float t_min = p.sqrDist(np);
 		    assertTrue(t_min==l_min);
 		}
+	}
+	
+	@Test
+	public void testNumberOfPoints() {
+
+		// Init vector of points
+
+		ArrayList<Point2i> v_tree_points = new ArrayList<Point2i>();
+		
+		v_tree_points.add(new Point2i(0,0));
+		v_tree_points.add(new Point2i(60,60));
+		v_tree_points.add(new Point2i(100,100));
+		v_tree_points.add(new Point2i(200,25));
+		v_tree_points.add(new Point2i(25,250));
+			
+		// Create kd-tree
+		
+		KdTree<Point2i> tree = new KdTree<Point2i>(2, v_tree_points,Integer.MAX_VALUE);		
+		
+		assertTrue(tree.nb_points() == 5);
+		assertFalse(tree.nb_points() !=5);
+		
+	}
+	
+	@Test
+	public void testZeroPoint() {
+
+		// Init vector of points
+
+		ArrayList<Point2i> v_tree_points = new ArrayList<Point2i>();
+		
+		// Create kd-tree
+		
+		KdTree<Point2i> tree = new KdTree<Point2i>(2, v_tree_points,Integer.MAX_VALUE);		
+		
+		assertTrue(tree.nb_points() == 0);
+		
 	}
 	
 }

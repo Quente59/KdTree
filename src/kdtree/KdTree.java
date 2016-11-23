@@ -2,7 +2,7 @@ package kdtree;
 
 import java.util.ArrayList;
 
-public class KdTree<Point extends PointI>
+public class KdTree<Point extends PointI>		// généricité contrainte
 {
 	/** A node in the KdTree
 	 */
@@ -10,9 +10,9 @@ public class KdTree<Point extends PointI>
 	{
 		KdNode child_left_, child_right_;
 		Point pos_;
-		int d_; 	/// dimension in which the cut occurs
+		int d_; 	/// dimension in which the cut occurs (x or y in 2d)
 		
-		KdNode(Point p, int d){
+		KdNode(Point p, int d){		// point de départ
 			this.pos_ = p;
 			this.d_ = d;
 			this.child_left_ = null;
